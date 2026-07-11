@@ -1,15 +1,12 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n=len(prices)
         
+        min_p=float("inf")
         max_p=0
-        for i in range(n-1):
-            for j in range(i+1,n):
-                if prices[i]<prices[j]:
-                    profit=prices[j]-prices[i]
-                    max_p=max(max_p,profit)
-                else:
-                    break
+        for curr in prices:
+            min_p=min(min_p,curr)
+            profit=curr-min_p
+            max_p=max(profit,max_p)
         return max_p
                 
             
