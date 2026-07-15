@@ -1,11 +1,17 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        n=len(nums)
-        hashmap=[0]*n
-        for i in range(n):
-            if hashmap[nums[i]]==0:
-                hashmap[nums[i]]=1
-            else:
-                return nums[i]
+        slow=0
+        fast=0
+        slow=nums[slow]
+        fast=nums[nums[fast]]
+        while slow!=fast:
+            slow=nums[slow]
+            fast=nums[nums[fast]]
+
+        fast=0
+        while slow!=fast:
+            slow=nums[slow]
+            fast=nums[fast]
+        return slow
         
         
