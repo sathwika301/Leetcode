@@ -1,21 +1,37 @@
 class Solution:
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         n = len(nums)
-        st = set()  
+        nums.sort()
+        ans = []
 
         for i in range(n):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+
             for j in range(i + 1, n):
-                seen = set() 
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
 
-                for k in range(j + 1, n):
-                   
-                    required = target - nums[i] - nums[j] - nums[k]
-                    if required in seen:
-                        temp = tuple(sorted([nums[i], nums[j], nums[k], required]))
-                        st.add(temp)
+                left, right = j + 1, n - 1
 
-                    seen.add(nums[k])
+                while left < right:
+                    total = nums[i] + nums[j] + nums[left] + nums[right]
 
-        
-        return [list(quad) for quad in st]
+                    if total == target:
+                        ans.append([nums[i], nums[j], nums[left], nums[right]])
+
+                        while left < right and nums[left] == nums[left + 1]:
+                            left += 1
+                        while left < right and nums[right] == nums[right - 1]:
+                            right -= 1
+
+                        left += 1
+                        right -= 1
+
+                    elif total < target:
+                        left += 1
+                    else:
+                        right -= 1
+
+        return ans
         
