@@ -4,7 +4,7 @@ class Solution:
         large=max(nums)
         mul=[]
         res=[]
-        for i in range(1,large+1):
+        for i in range(1,small+1):
             if small%i==0:
                 mul.append(i)
             if large%i==0:
