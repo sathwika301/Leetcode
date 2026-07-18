@@ -1,7 +1,6 @@
 # Write your MySQL query statement below
 SELECT e.name  as Employee 
-from  Employee e
-WHERE e.salary>
+FROM  Employee e JOIN Employee m
+WHERE e.managerId=m.Id and e.salary> m.salary
 
-(SELECT m.salary FROM Employee m
-WHERE m.id=e.managerId)
+
