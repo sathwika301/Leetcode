@@ -1,14 +1,14 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
-        small=min(nums)
-        large=max(nums)
-        mul=[]
-        res=[]
-        for i in range(1,small+1):
-            if small%i==0:
-                mul.append(i)
-            if large%i==0:
-                if i in mul:
-                    res.append(i)
-        return max(res)
+        a=min(nums)
+        b=max(nums)
+        return gcd(a,b)
+    def gcd(a,b):
+        while b!=0:
+            a=b
+            b=a%b
+        return a
+sol=Solution()
+res=sol.findGCD(nums = [2,5,6,9,10])
+print(res)
         
