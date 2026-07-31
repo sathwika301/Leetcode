@@ -5,7 +5,7 @@ class Solution:
         max_amt=0
         i=0
         j=len(height)-1
-        while i<=j:
+        while i<j:
             area=(j-i) * min(height[i],height[j])
             max_amt=max(max_amt,area)
             if height[i]<=height[j]:
