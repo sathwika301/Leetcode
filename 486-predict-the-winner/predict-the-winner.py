@@ -1,19 +1,17 @@
 
 class Solution:
     def predictTheWinner(self, nums: List[int]) -> bool:
-
-        def solve(left, right):
-
-            if left == right:
-                return nums[left]
+        n = len(nums)
+        if n % 2 == 0: 
+            return True
+            
+        dp = list(nums)
+        for i in range(n - 2, -1, -1):
+            for j in range(i + 1, n):
+                dp[j] = max(nums[i] - dp[j], nums[j] - dp[j - 1])
+        return dp[-1] >= 0
 
         
-            take_left = nums[left] - solve(left + 1, right)
-            take_right = nums[right] - solve(left, right - 1)
-
-            return max(take_left, take_right)
-
-        return solve(0, len(nums) - 1) >= 0
 sol = Solution()
 sol.predictTheWinner(nums=[1, 5, 233, 7])  
     
