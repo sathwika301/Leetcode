@@ -3,7 +3,7 @@ class Solution:
         res=[]
         small=min(nums)
         large=max(nums)
-        for i in range(small,large):
+        for i in range(small+1,large):
             if i in nums:
                 continue
             else:
