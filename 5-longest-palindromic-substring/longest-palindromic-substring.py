@@ -1,21 +1,18 @@
 
 class Solution:
     def longestPalindrome(self, s):
-        def expand(l, r):
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                l -= 1
-                r += 1
-            return s[l+1:r]
-
-        result = ""
+        def palindrome(i,j):
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                i-=1
+                j+=1
+            return s[i+1:j]
+        res=""
         for i in range(len(s)):
-            sub1 = expand(i, i)
-            if len(sub1) > len(result):
-                result = sub1
-            sub2 = expand(i, i+1)
-            if len(sub2) > len(result):
-                result = sub2
-        return result
-
-
+            odd=palindrome(i,i)
+            if len(odd)>len(res):
+                res=odd
+            even=palindrome(i,i+1)
+            if len(even)>len(res):
+                res=even
+        return res
         
